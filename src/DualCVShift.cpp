@@ -36,18 +36,19 @@ struct DualCVShift : Module {
     }
 
     void process(const ProcessArgs &args) override;
+    void do_shift(enum InputIds voct_in, enum OutputIds voct_out, enum ParamIds shift_knob, enum InputIds shift_in, enum ParamIds scale);
 };
 
 // Frequency corresponding to -10V
 static float min_freq = 440*exp2f(-10.75);
 
-void DualCVShift::process(const ProcessArgs &args) {
-    float shift;
-
-    int channels = inputs[VOCT_0].getChannels();
+void DualCVShift::do_shift(enum InputIds voct_in, enum OutputIds voct_out, enum ParamIds shift_knob, enum InputIds shift_in, enum ParamIds scale)
+{
+    int channels = inputs[voct_in].getChannels();
     if (channels > 0) {
-	shift = params[SHIFT_0].getValue() + inputs[SHIFT_CV_0].getVoltage();
-	switch ((int)params[SCALE_0].getValue()) {
+	float shift =
+	    params[shift_knob].getValue() + inputs[shift_in].getVoltage();
+	switch ((int)params[scale].getValue()) {
 	case 1:
 	    shift *= 10;
 	    break;
@@ -58,16 +59,23 @@ void DualCVShift::process(const ProcessArgs &args) {
 	    shift *= 1000;
 	    break;
 	}
-	outputs[OUTPUT_0].setChannels(channels);
+	outputs[voct_out].setChannels(channels);
 
 	for (int channel = 0; channel < channels; channel++) {
 	    float freq = shift +
-		440*exp2f(inputs[VOCT_0].getVoltage(channel) - 0.75);
+		440*exp2f(inputs[voct_in].getVoltage(channel) - 0.75);
 
 	    float volts = freq <= min_freq ? -10 : log2f(freq/440)+0.75;
-	    outputs[OUTPUT_0].setVoltage(volts, channel);
+	    outputs[voct_out].setVoltage(volts, channel);
 	}
     }	
+}
+
+void DualCVShift::process(const ProcessArgs &args) {
+    float shift;
+
+    do_shift(VOCT_0, OUTPUT_0, SHIFT_0, SHIFT_CV_0, SCALE_0);
+    do_shift(VOCT_1, OUTPUT_1, SHIFT_1, SHIFT_CV_1, SCALE_1);
 };
 
 
