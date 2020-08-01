@@ -1,0 +1,22 @@
+{
+  "slug": "CAOPlugs",
+  "name": "CAOPlugs",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Bogus Guy",
+  "authorEmail": "nope@no.way",
+  "authorUrl": "https://localhost/",
+  "pluginUrl": "https://localhost/",
+  "manualUrl": "https://localhost/",
+  "sourceUrl": "https://localhost/",
+  "donateUrl": "",
+  "modules": [
+    {
+      "slug": "DualCVShift",
+      "name": "Dual CV Shift",
+      "description": "",
+      "tags": [
+      ]
+    }
+  ]
+}
