@@ -39,7 +39,7 @@ struct DualCVShift : Module {
 };
 
 // Frequency corresponding to -10V
-#define MIN_FREQ (440*exp2f(-10.75))
+static float min_freq = 440*exp2f(-10.75);
 
 void DualCVShift::process(const ProcessArgs &args) {
     float shift;
@@ -47,14 +47,24 @@ void DualCVShift::process(const ProcessArgs &args) {
     int channels = inputs[VOCT_0].getChannels();
     if (channels > 0) {
 	shift = params[SHIFT_0].getValue() + inputs[SHIFT_CV_0].getVoltage();
-	shift *= exp10(params[SCALE_0].getValue());
+	switch ((int)params[SCALE_0].getValue()) {
+	case 1:
+	    shift *= 10;
+	    break;
+	case 2:
+	    shift *= 100;
+	    break;
+	case 3:
+	    shift *= 1000;
+	    break;
+	}
 	outputs[OUTPUT_0].setChannels(channels);
 
 	for (int channel = 0; channel < channels; channel++) {
 	    float freq = shift +
 		440*exp2f(inputs[VOCT_0].getVoltage(channel) - 0.75);
 
-	    float volts = freq <= MIN_FREQ ? -10 : log2f(freq/440)+0.75;
+	    float volts = freq <= min_freq ? -10 : log2f(freq/440)+0.75;
 	    outputs[OUTPUT_0].setVoltage(volts, channel);
 	}
     }	
