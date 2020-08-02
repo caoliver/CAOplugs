@@ -83,25 +83,25 @@ struct DualCVShiftWidget : ModuleWidget {
     DualCVShiftWidget(DualCVShift *module);
 };
 
+
+#define ADD_SHIFTER(OFFSET, SHIFT, SHIFT_CV, SCALE, VOCT, OUTPUT)	\
+    do {								\
+	addParam(createParam<white_Knob>(mm2px(Vec(2.5, OFFSET+7)), module, DualCVShift::SHIFT)); \
+	addInput(createInput<input_Port>(mm2px(Vec(3.4, OFFSET+20.9)), module, DualCVShift::SHIFT_CV)); \
+	addParam(createParam<white_Switch>(mm2px(Vec(1.8, OFFSET+34)), module, DualCVShift::SCALE)); \
+	addInput(createInput<input_Port>(mm2px(Vec(3.4, OFFSET+41.3)), module, DualCVShift::VOCT)); \
+	addOutput(createOutput<output_Port>(mm2px(Vec(3.4, OFFSET+51.3)), module, DualCVShift::OUTPUT)); \
+    } while (0);
+
+
 DualCVShiftWidget::DualCVShiftWidget(DualCVShift *module) {
     setModule(module);
     box.size = Vec(15 * 3, 380);
 
     setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/DualCVShift.svg")));
 
-    addParam(createParam<white_Knob>(mm2px(Vec(2.5, 8)), module, DualCVShift::SHIFT_0));
-    addInput(createInput<input_Port>(mm2px(Vec(3.4, 21.9)), module, DualCVShift::SHIFT_CV_0));
-    addParam(createParam<white_Switch>(mm2px(Vec(1.8, 36)), module, DualCVShift::SCALE_0));
-    addInput(createInput<input_Port>(mm2px(Vec(3.4, 43.3)), module, DualCVShift::VOCT_0));
-    addOutput(createOutput<output_Port>(mm2px(Vec(3.4, 53.3)), module, DualCVShift::OUTPUT_0));
-
-#define NEXT 59.6
-    
-    addParam(createParam<white_Knob>(mm2px(Vec(2.5, NEXT+8)), module, DualCVShift::SHIFT_1));
-    addInput(createInput<input_Port>(mm2px(Vec(3.4, NEXT+21.9)), module, DualCVShift::SHIFT_CV_1));
-    addParam(createParam<white_Switch>(mm2px(Vec(1.8, NEXT+36)), module, DualCVShift::SCALE_1));
-    addInput(createInput<input_Port>(mm2px(Vec(3.4, NEXT+43.3)), module, DualCVShift::VOCT_1));
-    addOutput(createOutput<output_Port>(mm2px(Vec(3.4, NEXT+53.3)), module, DualCVShift::OUTPUT_1));
+    ADD_SHIFTER(0, SHIFT_0, SHIFT_CV_0, SCALE_0, VOCT_0, OUTPUT_0);
+    ADD_SHIFTER(58, SHIFT_1, SHIFT_CV_1, SCALE_1, VOCT_1, OUTPUT_1);
 }
 
 Model *modelDualCVShift =
