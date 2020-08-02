@@ -1,3 +1,5 @@
+DualCVShift:
+
 The voltage on the Shift jack and the position of the knob are added.
 That sum is scaled by 1, 10, 100, or 1000 depending on the position
 of the scale switch.  This is the frequency displacement in Hz.  The V/Oct
