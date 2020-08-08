@@ -7,3 +7,8 @@ silver jack is the input, and the shifted V/Oct comes out the gold.
 Thus for a knob set to 4, with in shift voltage of -6, and the switch
 in the third (100s) position, the frequency (V/Oct) is shifted by
 100*(4-6) = -200Hz.
+
+AddAll:
+
+Take a single voltage (Maybe a V/Oct), and produce up to four sums with
+four independent voltages.

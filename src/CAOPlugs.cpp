@@ -6,4 +6,5 @@ void init(rack::Plugin *p) {
     pluginInstance = p;
 
     p->addModel(modelDualCVShift);
+    p->addModel(modelAddAll);
 }
