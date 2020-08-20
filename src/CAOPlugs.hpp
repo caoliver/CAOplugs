@@ -6,8 +6,8 @@ using namespace rack;
 extern Plugin *pluginInstance;
 
 extern Model *modelDualCVShift;
+extern Model *modelDualVarShift;
 extern Model *modelAddAll;
-
 
 struct output_Port : app::SvgPort {
     output_Port() {

@@ -1,9 +1,9 @@
 {
   "slug": "CAOPlugs",
   "name": "CAOPlugs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
-  "author": "Bogus Guy",
+  "author": "Christopher Oliver",
   "authorEmail": "nope@no.way",
   "authorUrl": "https://localhost/",
   "pluginUrl": "https://localhost/",
@@ -14,15 +14,27 @@
     {
       "slug": "DualCVShift",
       "name": "Dual CV Shift",
-      "description": "",
+      "description": "V/Oct shifter",
+	"tags": [
+	    "Polyphonic",
+	    "Utility"
+	]
+    },
+    {
+      "slug": "DualVarShift",
+      "name": "Dual Var Shift",
+      "description": "V/Oct shifter",
       "tags": [
+	    "Polyphonic",
+	    "Utility"
       ]
     },
     {
       "slug": "AddAll",
       "name": "Add All",
-      "description": "",
+      "description": "Add a voltage to all inputs.",
       "tags": [
+	    "Utility"
       ]
     }
   ]
