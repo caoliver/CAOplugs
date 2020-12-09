@@ -1,7 +1,7 @@
 {
   "slug": "CAOPlugs",
   "name": "CAOPlugs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "author": "Christopher Oliver",
   "authorEmail": "nope@no.way",
@@ -26,6 +26,14 @@
       "description": "V/Oct shifter",
       "tags": [
 	    "Polyphonic",
+	    "Utility"
+      ]
+    },
+    {
+      "slug": "DualPBFixer",
+      "name": "Dual Pitch Bend Fixer",
+      "description": "Pitch bend scaler",
+      "tags": [
 	    "Utility"
       ]
     },

@@ -7,6 +7,7 @@ extern Plugin *pluginInstance;
 
 extern Model *modelDualCVShift;
 extern Model *modelDualVarShift;
+extern Model *modelDualPBFixer;
 extern Model *modelAddAll;
 
 struct output_Port : app::SvgPort {

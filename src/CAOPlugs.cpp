@@ -7,5 +7,6 @@ void init(rack::Plugin *p) {
 
     p->addModel(modelDualCVShift);
     p->addModel(modelDualVarShift);
+    p->addModel(modelDualPBFixer);
     p->addModel(modelAddAll);
 }

@@ -23,3 +23,9 @@ AddAll:
 
 Take a single voltage (Maybe a V/Oct), and produce up to four sums with
 four independent voltages.
+
+DualPBFixer:
+
+Take a pitchbend signal and scale it up by Upper semitones for positive
+pitchwheel movement, or down by Lower semitones for negative pitchwheel
+movement.
