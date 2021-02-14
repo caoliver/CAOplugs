@@ -5,10 +5,12 @@ using namespace rack;
 
 extern Plugin *pluginInstance;
 
+extern Model *modelFIFO;
+extern Model *modelCLatch;
 extern Model *modelDualCVShift;
 extern Model *modelDualVarShift;
-extern Model *modelDualPBFixer;
 extern Model *modelAddAll;
+extern Model *modelDualPBFixer;
 
 struct output_Port : app::SvgPort {
     output_Port() {
@@ -22,7 +24,15 @@ struct input_Port : app::SvgPort {
     }
 };
 
-struct white_Knob : SvgKnob {
+struct white_Button: app::SvgSwitch {
+    white_Button() {
+	shadow->opacity = 0.0f;
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "./res/SqrButton-up.svg")));
+	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "./res/SqrButton-down.svg")));
+    }
+};
+
+struct white_Knob : app::SvgKnob {
     white_Knob() {
 	minAngle = -.9 * M_PI;
 	maxAngle = 0.9 * M_PI;
@@ -30,7 +40,16 @@ struct white_Knob : SvgKnob {
     }
 };
 
-struct white_Switch:  SVGSwitch {
+struct white_SnapKnob : app::SvgKnob {
+    white_SnapKnob() {
+	snap = true;
+	minAngle = -.9 * M_PI;
+	maxAngle = 0.9 * M_PI;
+	setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/KnobWhite.svg")));
+    }
+};
+
+struct white_Switch:  app::SVGSwitch {
     white_Switch() {
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "./res/SwitchWhite_0.svg")));
 	addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "./res/SwitchWhite_1.svg")));

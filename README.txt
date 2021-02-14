@@ -29,3 +29,9 @@ DualPBFixer:
 Take a pitchbend signal and scale it up by Upper semitones for positive
 pitchwheel movement, or down by Lower semitones for negative pitchwheel
 movement.
+
+CLatch:
+
+A chord latch reminiscent of the chord memory feature provided by a
+popular polyphonic synthesizer from the eighties.  See clatch.vcv
+from examples for a simple patch.

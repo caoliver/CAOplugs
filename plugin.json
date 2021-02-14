@@ -1,7 +1,7 @@
 {
   "slug": "CAOPlugs",
   "name": "CAOPlugs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "author": "Christopher Oliver",
   "authorEmail": "nope@no.way",
@@ -33,6 +33,14 @@
       "slug": "DualPBFixer",
       "name": "Dual Pitch Bend Fixer",
       "description": "Pitch bend scaler",
+      "tags": [
+	    "Utility"
+      ]
+    },
+    {
+      "slug": "CLatch",
+      "name": "Chord Latch",
+      "description": "Chord latch",
       "tags": [
 	    "Utility"
       ]
