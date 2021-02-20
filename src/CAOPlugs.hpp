@@ -9,6 +9,7 @@ extern Model *modelFIFO;
 extern Model *modelCLatch;
 extern Model *modelDualCVShift;
 extern Model *modelDualVarShift;
+extern Model *modelDualQuadOsc;
 extern Model *modelAddAll;
 extern Model *modelDualPBFixer;
 

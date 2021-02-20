@@ -73,10 +73,10 @@ void CLatch::process(const ProcessArgs &args) {
 	    LatchedVOcts[channel] -= BottomNote;
 
     } else {
-	float monoGate = inputs[TRANSPOSE_GATE_IN].getVoltage();
-	if (monoGate <= 0 && TransposeCtrl == 0)
+	bool monoGateOn = inputs[TRANSPOSE_GATE_IN].getVoltage() > 0;
+	if (!monoGateOn && TransposeCtrl == 0)
 	    TransposeCtrl = 1;
-	else if (monoGate > 0 && TransposeCtrl == 1)
+	else if (monoGateOn && TransposeCtrl == 1)
 	    TransposeCtrl = 2;
 
 	outputs[POLY_VOCT_OUT].setChannels(OutVOctCount);
@@ -88,10 +88,13 @@ void CLatch::process(const ProcessArgs &args) {
 	    }
 	}
 	outputs[POLY_GATE_OUT].setChannels(OutGateCount);
-	for (int channel = 0; channel < OutGateCount; channel++) {
-	    float isOn = monoGate > 0 ? LatchedGates[channel] : 0;
-	    outputs[POLY_GATE_OUT].setVoltage(isOn, channel);
-	}
+	if (monoGateOn)
+	    for (int channel = 0; channel < OutGateCount; channel++)
+		outputs[POLY_GATE_OUT].setVoltage(LatchedGates[channel],
+						  channel);
+	else
+	    for (int channel = 0; channel < OutGateCount; channel++)
+		outputs[POLY_GATE_OUT].setVoltage(0, channel);
     }
 }
 
