@@ -5,7 +5,6 @@ Plugin *pluginInstance;
 void init(rack::Plugin *p) {
     pluginInstance = p;
 
-    p->addModel(modelFIFO);
     p->addModel(modelCLatch);
     p->addModel(modelDualCVShift);
     p->addModel(modelDualVarShift);

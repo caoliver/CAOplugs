@@ -5,7 +5,6 @@ using namespace rack;
 
 extern Plugin *pluginInstance;
 
-extern Model *modelFIFO;
 extern Model *modelCLatch;
 extern Model *modelDualCVShift;
 extern Model *modelDualVarShift;
