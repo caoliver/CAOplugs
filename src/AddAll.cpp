@@ -34,8 +34,6 @@ struct AddAll : Module {
 };
 
 void AddAll::process(const ProcessArgs &args) {
-    float shift;
-
     float commonV = inputs[COMMON].getVoltage();
     
     outputs[OUTPUT_0].setVoltage(inputs[INPUT_0].getVoltage() + commonV);

@@ -45,8 +45,6 @@ void DualPBFixer::do_scale(enum InputIds bend_in, enum OutputIds bend_out, enum 
 }
 
 void DualPBFixer::process(const ProcessArgs &args) {
-    float shift;
-
     do_scale(BEND_IN_0, BEND_OUT_0, LOWER_0, UPPER_0);
     do_scale(BEND_IN_0, BEND_OUT_0, LOWER_0, UPPER_0);
 };

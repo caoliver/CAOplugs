@@ -72,8 +72,6 @@ void DualCVShift::do_shift(enum InputIds voct_in, enum OutputIds voct_out, enum 
 }
 
 void DualCVShift::process(const ProcessArgs &args) {
-    float shift;
-
     do_shift(VOCT_0, OUTPUT_0, SHIFT_0, SHIFT_CV_0, SCALE_0);
     do_shift(VOCT_1, OUTPUT_1, SHIFT_1, SHIFT_CV_1, SCALE_1);
 };

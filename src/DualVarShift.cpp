@@ -78,8 +78,6 @@ void DualVarShift::do_shift(enum InputIds voct_in, enum OutputIds voct_out, enum
 }
 
 void DualVarShift::process(const ProcessArgs &args) {
-    float shift;
-
     do_shift(VOCT_0, OUTPUT_0, SHIFT_0, SHIFT_BASE_0, SCALE_0);
     do_shift(VOCT_1, OUTPUT_1, SHIFT_1, SHIFT_BASE_1, SCALE_1);
 };
