@@ -14,7 +14,7 @@ struct DualPBFixer : Module {
     };
 
     enum InputIds {
-	BEND_IN_0,
+	BEND_IN_0 = 0,
 	BEND_IN_1,
 	NUM_INPUTS
     };
@@ -39,14 +39,15 @@ struct DualPBFixer : Module {
 
 void DualPBFixer::do_scale(enum InputIds bend_in, enum OutputIds bend_out, enum ParamIds lower_range, enum ParamIds upper_range)
 {
-    float bend_val = inputs[bend_in].getVoltage(bend_in)/(5.0*12.0);
+    static int i = 0;
+    float bend_val = inputs[bend_in].getVoltage()/(5.0*12.0);
     enum ParamIds bend_type = bend_val < 0 ? lower_range : upper_range;
     outputs[bend_out].setVoltage(fabs(bend_val) * params[bend_type].getValue());
 }
 
 void DualPBFixer::process(const ProcessArgs &args) {
     do_scale(BEND_IN_0, BEND_OUT_0, LOWER_0, UPPER_0);
-    do_scale(BEND_IN_0, BEND_OUT_0, LOWER_0, UPPER_0);
+    do_scale(BEND_IN_1, BEND_OUT_1, LOWER_1, UPPER_1);
 };
 
 
